@@ -803,7 +803,7 @@ A arquitetura é baseada em dois pods principais que se comunicam via RabbitMQ, 
     - Documentar como adicionar novos tipos de destino
     - _Requisitos: 1.1_
 
-- [~] 24. Checkpoint final - Validação completa do sistema
+- [x] 24. Checkpoint final - Validação completa do sistema
   - Executar todos os testes (unitários, propriedade, integração)
   - Verificar cobertura de código (mínimo 80%)
   - Executar sistema localmente com Docker Compose
