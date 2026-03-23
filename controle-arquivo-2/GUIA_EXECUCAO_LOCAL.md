@@ -6,7 +6,7 @@ Este guia mostra como executar o sistema completo localmente no seu ambiente Win
 
 Antes de começar, você precisa ter instalado:
 
-1. ✅ **Java 17+** (você já tem)
+1. ❌ **Java 17+** (você tem Java 8 - precisa atualizar - veja [INSTALAR_JAVA_17.md](INSTALAR_JAVA_17.md))
 2. ✅ **Docker Desktop** (você já tem)
 3. ❌ **Maven 3.8+** (precisa instalar - veja Passo 1)
 
@@ -14,6 +14,20 @@ Antes de começar, você precisa ter instalado:
 - Mínimo 8GB RAM disponível
 - 10GB espaço em disco
 - Conexão com internet (primeira execução)
+
+---
+
+## ⚠️ IMPORTANTE: Instalar Java 17 Primeiro
+
+**Você tem Java 8 instalado, mas o projeto precisa de Java 17.**
+
+Antes de continuar, siga as instruções em **[INSTALAR_JAVA_17.md](INSTALAR_JAVA_17.md)** para:
+1. Instalar Java 17
+2. Configurar JAVA_HOME
+3. Atualizar PATH
+4. Verificar instalação
+
+Depois volte aqui e continue do Passo 1.
 
 ---
 
