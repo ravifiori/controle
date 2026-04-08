@@ -5,7 +5,7 @@ import com.controle.arquivos.common.domain.entity.LayoutIdentificationRule;
 import com.controle.arquivos.common.domain.enums.OrigemValor;
 import com.controle.arquivos.common.domain.enums.TipoCriterio;
 import com.controle.arquivos.common.repository.LayoutIdentificationRuleRepository;
-import jakarta.persistence.EntityManager;
+import javax.persistence.EntityManager;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

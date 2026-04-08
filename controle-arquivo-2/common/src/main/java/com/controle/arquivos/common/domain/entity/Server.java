@@ -2,7 +2,7 @@ package com.controle.arquivos.common.domain.entity;
 
 import com.controle.arquivos.common.domain.enums.OrigemServidor;
 import com.controle.arquivos.common.domain.enums.TipoServidor;
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

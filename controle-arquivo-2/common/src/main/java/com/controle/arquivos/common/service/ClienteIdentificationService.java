@@ -181,11 +181,17 @@ public class ClienteIdentificationService {
             return false;
         }
 
-        return switch (criterio) {
-            case COMECA_COM -> valorExtraido.startsWith(valorEsperado);
-            case TERMINA_COM -> valorExtraido.endsWith(valorEsperado);
-            case CONTEM -> valorExtraido.contains(valorEsperado);
-            case IGUAL -> valorExtraido.equals(valorEsperado);
-        };
+        switch (criterio) {
+            case COMECA_COM:
+                return valorExtraido.startsWith(valorEsperado);
+            case TERMINA_COM:
+                return valorExtraido.endsWith(valorEsperado);
+            case CONTEM:
+                return valorExtraido.contains(valorEsperado);
+            case IGUAL:
+                return valorExtraido.equals(valorEsperado);
+            default:
+                return false;
+        }
     }
 }

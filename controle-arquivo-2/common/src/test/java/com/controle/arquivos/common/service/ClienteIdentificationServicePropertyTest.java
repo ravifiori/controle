@@ -145,12 +145,24 @@ class ClienteIdentificationServicePropertyTest {
         boolean resultado = service.aplicarRegra(regra, nomeArquivo);
 
         // Assert
-        boolean esperado = switch (criterio) {
-            case COMECA_COM -> nomeArquivo.startsWith(valor);
-            case TERMINA_COM -> nomeArquivo.endsWith(valor);
-            case CONTEM -> nomeArquivo.contains(valor);
-            case IGUAL -> nomeArquivo.equals(valor);
-        };
+        boolean esperado;
+        switch (criterio) {
+            case COMECA_COM:
+                esperado = nomeArquivo.startsWith(valor);
+                break;
+            case TERMINA_COM:
+                esperado = nomeArquivo.endsWith(valor);
+                break;
+            case CONTEM:
+                esperado = nomeArquivo.contains(valor);
+                break;
+            case IGUAL:
+                esperado = nomeArquivo.equals(valor);
+                break;
+            default:
+                esperado = false;
+                break;
+        }
 
         assertEquals(esperado, resultado, 
             String.format("Critério %s deve ser aplicado corretamente para '%s' e '%s'", 

@@ -182,13 +182,24 @@ public class RastreabilidadeService {
         }
 
         // Validar transições baseadas no status atual
-        boolean transicaoValida = switch (statusAtual) {
-            case EM_ESPERA -> novoStatus == StatusProcessamento.PROCESSAMENTO || 
-                             novoStatus == StatusProcessamento.ERRO;
-            case PROCESSAMENTO -> novoStatus == StatusProcessamento.CONCLUIDO || 
+        boolean transicaoValida;
+        switch (statusAtual) {
+            case EM_ESPERA:
+                transicaoValida = novoStatus == StatusProcessamento.PROCESSAMENTO || 
                                  novoStatus == StatusProcessamento.ERRO;
-            case CONCLUIDO, ERRO -> false; // Estados finais, não permitem transição
-        };
+                break;
+            case PROCESSAMENTO:
+                transicaoValida = novoStatus == StatusProcessamento.CONCLUIDO || 
+                                 novoStatus == StatusProcessamento.ERRO;
+                break;
+            case CONCLUIDO:
+            case ERRO:
+                transicaoValida = false; // Estados finais, não permitem transição
+                break;
+            default:
+                transicaoValida = false;
+                break;
+        }
 
         if (!transicaoValida) {
             throw new IllegalStateException(

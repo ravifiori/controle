@@ -1,9 +1,9 @@
 package com.controle.arquivos.common.logging;
 
-import jakarta.servlet.FilterChain;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+import javax.servlet.FilterChain;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -81,8 +81,8 @@ class CorrelationIdFilterTest {
         // When
         filter.doFilterInternal(request, response, new FilterChain() {
             @Override
-            public void doFilter(jakarta.servlet.ServletRequest servletRequest, 
-                               jakarta.servlet.ServletResponse servletResponse) {
+            public void doFilter(javax.servlet.ServletRequest servletRequest, 
+                               javax.servlet.ServletResponse servletResponse) {
                 // Verificar que o MDC foi configurado durante a execução do filtro
                 String mdcCorrelationId = MDC.get("correlationId");
                 assertThat(mdcCorrelationId).isEqualTo(expectedCorrelationId);

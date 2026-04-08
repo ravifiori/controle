@@ -5,7 +5,7 @@ import com.controle.arquivos.common.domain.entity.LayoutIdentificationRule;
 import com.controle.arquivos.common.domain.enums.OrigemValor;
 import com.controle.arquivos.common.domain.enums.TipoCriterio;
 import com.controle.arquivos.common.repository.LayoutIdentificationRuleRepository;
-import jakarta.persistence.EntityManager;
+import javax.persistence.EntityManager;
 import net.jqwik.api.*;
 import org.mockito.Mockito;
 
@@ -303,12 +303,24 @@ class LayoutIdentificationServicePropertyTest {
         boolean resultado = service.aplicarRegra(regra, nomeArquivo, nomeArquivo);
 
         // Assert
-        boolean esperado = switch (criterio) {
-            case COMECA_COM -> nomeArquivo.startsWith(valor);
-            case TERMINA_COM -> nomeArquivo.endsWith(valor);
-            case CONTEM -> nomeArquivo.contains(valor);
-            case IGUAL -> nomeArquivo.equals(valor);
-        };
+        boolean esperado;
+        switch (criterio) {
+            case COMECA_COM:
+                esperado = nomeArquivo.startsWith(valor);
+                break;
+            case TERMINA_COM:
+                esperado = nomeArquivo.endsWith(valor);
+                break;
+            case CONTEM:
+                esperado = nomeArquivo.contains(valor);
+                break;
+            case IGUAL:
+                esperado = nomeArquivo.equals(valor);
+                break;
+            default:
+                esperado = false;
+                break;
+        }
 
         assertEquals(esperado, resultado, 
             String.format("Critério %s deve ser aplicado corretamente para '%s' e '%s'", 
@@ -573,13 +585,19 @@ class LayoutIdentificationServicePropertyTest {
             return "";
         }
         
-        return switch (criterio) {
-            case COMECA_COM -> texto.substring(0, Math.min(5, texto.length()));
-            case TERMINA_COM -> texto.substring(Math.max(0, texto.length() - 5));
-            case CONTEM -> texto.substring(Math.max(0, texto.length() / 2 - 2), 
-                                          Math.min(texto.length(), texto.length() / 2 + 3));
-            case IGUAL -> texto;
-        };
+        switch (criterio) {
+            case COMECA_COM:
+                return texto.substring(0, Math.min(5, texto.length()));
+            case TERMINA_COM:
+                return texto.substring(Math.max(0, texto.length() - 5));
+            case CONTEM:
+                return texto.substring(Math.max(0, texto.length() / 2 - 2), 
+                                              Math.min(texto.length(), texto.length() / 2 + 3));
+            case IGUAL:
+                return texto;
+            default:
+                return "";
+        }
     }
 
     // ========== Providers ==========

@@ -5,7 +5,7 @@ import com.controle.arquivos.common.domain.entity.LayoutIdentificationRule;
 import com.controle.arquivos.common.domain.enums.OrigemValor;
 import com.controle.arquivos.common.domain.enums.TipoCriterio;
 import com.controle.arquivos.common.repository.LayoutIdentificationRuleRepository;
-import jakarta.persistence.EntityManager;
+import javax.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -247,11 +247,17 @@ public class LayoutIdentificationService {
             return false;
         }
 
-        return switch (criterio) {
-            case COMECA_COM -> valorExtraido.startsWith(valorEsperado);
-            case TERMINA_COM -> valorExtraido.endsWith(valorEsperado);
-            case CONTEM -> valorExtraido.contains(valorEsperado);
-            case IGUAL -> valorExtraido.equals(valorEsperado);
-        };
+        switch (criterio) {
+            case COMECA_COM:
+                return valorExtraido.startsWith(valorEsperado);
+            case TERMINA_COM:
+                return valorExtraido.endsWith(valorEsperado);
+            case CONTEM:
+                return valorExtraido.contains(valorEsperado);
+            case IGUAL:
+                return valorExtraido.equals(valorEsperado);
+            default:
+                return false;
+        }
     }
 }

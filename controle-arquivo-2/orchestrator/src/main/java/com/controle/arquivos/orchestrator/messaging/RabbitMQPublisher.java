@@ -41,7 +41,7 @@ public class RabbitMQPublisher {
      * @throws AmqpException se a publicação falhar após todas as tentativas
      */
     @Retryable(
-        retryFor = {AmqpException.class},
+        value = {AmqpException.class},
         maxAttempts = 3,
         backoff = @Backoff(delay = 1000, multiplier = 2.0)
     )

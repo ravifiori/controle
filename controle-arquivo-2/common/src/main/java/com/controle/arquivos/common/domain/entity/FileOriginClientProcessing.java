@@ -2,7 +2,7 @@ package com.controle.arquivos.common.domain.entity;
 
 import com.controle.arquivos.common.domain.enums.EtapaProcessamento;
 import com.controle.arquivos.common.domain.enums.StatusProcessamento;
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
